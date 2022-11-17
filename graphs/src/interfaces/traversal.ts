@@ -1,5 +1,8 @@
 import Graph from './graph';
+import Vertex from './vertex';
 
 export default interface Traversal {
-  traverse(g: Graph): void
+  graph: Graph;
+  indexMap: Map<number, number>;
+  traverse(): void;
 }
