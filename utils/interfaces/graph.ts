@@ -6,10 +6,18 @@ export default abstract class Graph {
   public vertexes: Vertex[] = [];
   public isCyclic: boolean = false;
   public isDirected: boolean = false;
-  protected traversal: Traversal;
+  public start: number;
 
-  constructor(traversal: Traversal){
-    this.traversal = traversal;
+  constructor(vStart: Vertex){
+    this.start = this.findV(vStart) ;
+  }
+
+  public setStart(v: Vertex) {
+     this.start = this.findV(v); 
+  }
+
+  protected findV({ id } : Vertex) {
+    return this.vertexes.findIndex(k => k.id === id);
   }
 
   public addVertex(v: Vertex): void {
@@ -17,16 +25,15 @@ export default abstract class Graph {
   }
 
   public removeVertex(id: number): Vertex | undefined {
-    const v = this.vertexes.find(v => v.id == id);
-    const i = this.vertexes.findIndex(v => v.id == id);
-    if (v != undefined) {
+    const v = this.vertexes.find(v => v.id === id);
+    const i = this.vertexes.findIndex(v => v.id === id);
+    if (v === undefined) throw new Error('Vertex id error while trying to remove Vertex');
 
       this.vertexes.forEach((u) => {
         this.removeEdge([u, v]);
       }); 
 
       return this.vertexes.splice(i, 1)[0];
-    }
   }
 
   /**
@@ -41,14 +48,17 @@ export default abstract class Graph {
   }
   */
 
-  public populateData() {
-    this.traversal = this.createTraversal();
-    this.traversal.detectCycle(this);
-    if (!this.isCyclic)
-      this.traversal.detectTopOrder(this);
+  public populateData(start: number, type?: string,) {
+    let traversal = this.createTraversal(start, type);
+    if (traversal) {
+      traversal.detectCycle();
+      if (!this.isCyclic) {
+        traversal.detectTopOrder();
+      }
+    }
   }
 
   abstract addEdge([u, v] : Vertex[]): void;
   abstract removeEdge([u, v]: Vertex[]): void;
-  abstract createTraversal(): Traversal;
+  abstract createTraversal(start: number, type?: string): Traversal | null;
 }

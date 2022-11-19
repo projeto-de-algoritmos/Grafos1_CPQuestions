@@ -1,6 +1,6 @@
 export default interface Vertex {
   adjList: Vertex[];
-  id: Number;
+  id: number;
   removeVertex(id: number): Vertex;
   addVertex(v: Vertex): void;
 }
