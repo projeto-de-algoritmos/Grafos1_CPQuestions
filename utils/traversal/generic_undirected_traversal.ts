@@ -16,9 +16,13 @@ export default class GenericUndirectedTraversal implements Traversal {
   visited: number[];
   vertexes: Vertex[];
   discovered: number[];
-  isBissected: boolean = true;
-  mapInd: Map<number, number>;
+  mapInd: Map<string, number>;
   
+  public isCyclic: boolean = false;
+  public isDirected: boolean = false;
+  public isBipartite: boolean = true;
+  public hasTopOrder: boolean = false;
+
 
   constructor(g: Graph, start: Vertex) {
     this.g = g;
@@ -55,7 +59,7 @@ export default class GenericUndirectedTraversal implements Traversal {
         const uind: number | undefined = this.mapInd.get(u.id);
         if (uind === undefined) throw new Error("Error in vertex on the Adj List"); 
 
-        if (this.colors[uind] === this.colors[v]) this.isBissected = false;
+        if (this.colors[uind] === this.colors[v]) this.isBipartite = false;
 
         if (this.dists[uind] === -1) {
           this.dists[uind] = this.dists[v] + 1; 
@@ -103,20 +107,21 @@ export default class GenericUndirectedTraversal implements Traversal {
       if (this.visited[vind] === this.WHITE && 
           this.dfsCycle(this.vertexes, this.visited, vind)) {
           
-          this.g.isCyclic = true;
+          this.isCyclic = true;
           return true;
       }
     }
 
-    this.g.isCyclic = false;
+    this.isCyclic = false;
     return false;
   }
 
   public detectBipartion(): boolean {
-    return this.isBissected;
+    return this.isBipartite;
   }
 
   public detectTopOrder(): boolean {
+    this.hasTopOrder = false;
     return false; 
   }
 }
