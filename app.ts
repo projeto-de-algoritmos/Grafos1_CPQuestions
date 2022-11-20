@@ -7,6 +7,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
+const edgeRouter = require('./routes/edge');
+const investigationRouter = require('./routes/investigation');
 
 configDb();
 const app = express();
@@ -18,5 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api/investigation', investigationRouter);
+app.use('/api/edge', edgeRouter);
 
 export default app;
