@@ -4,9 +4,11 @@
  * Module dependencies.
  */
 
-const app = require('../app');
-const debug = require('debug')('grafos1-a-definir:server');
-const http = require('http');
+import app from '../app';
+import debug from 'debug';
+debug('grafos1-a-definir:server');
+
+import http from 'http';
 
 /**
  * Get port from environment and store in Express.
@@ -33,7 +35,7 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
+function normalizePort(val: any) {
   const port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -53,7 +55,7 @@ function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+function onError(error: any) {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -83,8 +85,11 @@ function onError(error) {
 
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  if(addr) {
+    const bind = typeof addr === 'string'
+      ? 'pipe ' + addr
+      : 'port ' + addr.port;
+    debug('Listening on ' + bind);
+  }
+  else throw new Error('Address is not defined');
 }

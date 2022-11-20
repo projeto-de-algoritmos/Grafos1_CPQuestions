@@ -25,7 +25,7 @@ export interface IInvestigation {
     vertexes: IInvestElem[];
     isCyclic: boolean;
     isDirected: boolean;
-    start: number;
+    start: Types.ObjectId;
     hasTopOrder: boolean;
     isBipartite: boolean;
     type: string;
@@ -46,7 +46,7 @@ export const invetigationSchema = new Schema<IInvestigation, InvestigationModelT
         thumb: { type: String }
     })],
     isDirected: { type: Boolean },
-    start: { type: Number, required: true},
+    start: { type: Schema.Types.ObjectId, required: true},
     hasTopOrder: { type: Boolean },
     isBipartite: { type: Boolean },
     type: { type: String, enum: ['directed', 'undirected'] },

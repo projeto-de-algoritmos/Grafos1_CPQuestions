@@ -1,14 +1,16 @@
-require('dotenv').config({ path: './.config.env' });
+import dotenv from 'dotenv';
+dotenv.config({ path: './.config.env' });
+
 import configDb from './config/configdb';
 
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
 
-const indexRouter = require('./routes/index');
-const edgeRouter = require('./routes/edge');
-const investigationRouter = require('./routes/investigation');
+import indexRouter from './routes/index';
+import edgeRouter from './routes/edge';
+import investigationRouter from './routes/investigation';
 
 configDb();
 const app = express();

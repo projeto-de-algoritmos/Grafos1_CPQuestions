@@ -2,6 +2,12 @@ import Graph from "../interfaces/graph";
 import Vertex from "../interfaces/vertex";
 import Traversal from "../interfaces/traversal";
 
+/**
+ * Be careful, there is a correct order to realize the operations
+ * and determine graph attributes.
+ * 
+ * The Graph class uses the correct order
+ */
 export default class GenericUndirectedTraversal implements Traversal {
 
   GRAY = 1;
@@ -70,6 +76,7 @@ export default class GenericUndirectedTraversal implements Traversal {
       
    }
   }
+
   private dfsCycle(graph: Vertex[], visited: number[], vind: number): boolean {
     if (visited[vind] === this.WHITE) {
       visited[vind] = this.GRAY;

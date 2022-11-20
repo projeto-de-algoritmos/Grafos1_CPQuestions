@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/:id/', InvestController.getGraph);
 router.post('/', InvestController.createGraph);
-router.post('/:id/', InvestController.createVertex);
+// router.post('/:id/', InvestController.createVertex);
 
 export default router;
