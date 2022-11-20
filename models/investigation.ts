@@ -5,6 +5,7 @@ export interface IInvestElem {
     name: string;
     descript: string;
     type:string;
+    thumb: string;
     adjList: Types.ObjectId[];
 }
 
@@ -15,6 +16,7 @@ export const investElemSchema = new Schema<IInvestElem, InvestElemModel>({
     name: {type: String, required: true},
     descript: {type: String, required: true},
     type: {type: String, required: true, enum: ['Person', 'Local', 'Object']},
+    thumb: { type: String }
 });
 
 export const InvestElem = model<IInvestElem, InvestElemModel>('InvestElem', investElemSchema);
@@ -41,6 +43,7 @@ export const invetigationSchema = new Schema<IInvestigation, InvestigationModelT
         name: {type: String, required: true},
         descript: {type: String, required: true},
         type: {type: String, required: true, enum: ['person', 'local', 'object']},
+        thumb: { type: String }
     })],
     isDirected: { type: Boolean },
     start: { type: Number, required: true},
