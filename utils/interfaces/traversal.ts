@@ -1,5 +1,3 @@
-import Graph from './graph'
-
 export default interface Traversal {
   dists: number[];
   isCyclic: boolean;

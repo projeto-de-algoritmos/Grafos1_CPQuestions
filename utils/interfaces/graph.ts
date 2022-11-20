@@ -1,6 +1,5 @@
 import Vertex from "./vertex";
 import Traversal from "./traversal";
-import { Edge } from "../types/edge";
 
 export default abstract class Graph {
   public vertexes: Vertex[] = [];
