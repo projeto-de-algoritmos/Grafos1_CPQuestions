@@ -6,7 +6,7 @@ export interface IInvestElem {
     descript: string;
     type:string;
     thumb: string;
-    adjList: Types.ObjectId[];
+    adjList: Types.Array<Types.ObjectId>;
 }
 
 export type InvestElemModel = Model<IInvestElem> ;
@@ -15,7 +15,7 @@ export const investElemSchema = new Schema<IInvestElem, InvestElemModel>({
     adjList: [{ type: Schema.Types.ObjectId, ref: 'InvestElem'}],
     name: {type: String, required: true},
     descript: {type: String, required: true},
-    type: {type: String, required: true, enum: ['Person', 'Local', 'Object']},
+    type: {type: String, required: true, enum: ['person', 'local', 'object']},
     thumb: { type: String }
 });
 
