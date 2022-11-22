@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+using vi = vector<int>;
+using Graph = vi;
+using Vertex = int;
+const int N = 1e5 + 3;
+
+int dist[N];
+
+int solve(int m) {
+  int u, v;
+  int count = 0;
+  while(m--) {
+    cin >> u >> v;
+    count += min(u, v);
+  }
+
+  return count;
+}
+
+// Lembrete: NÃO USAR "endl". Faz flush automático do cout.
+int main() {
+  //Stream mais veloz (desacolpa de stdio do C)
+  iostream::sync_with_stdio(0);
+  cin.tie(0);
+  int t, n;
+  cin >> t;
+  while (t--) {
+    cin >> n;
+    int m = n-1;
+    for (int i = 0; i < n; ++i) {
+      dist[i] = -1;
+    }
+
+    cout << solve(m) << '\n';
+  }
+  
+  return 0;
+} 
+
