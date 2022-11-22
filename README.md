@@ -22,19 +22,27 @@ Temas:
 |Matrícula | Aluno |
 | -- | -- |
 | 16/0000572  |  Adrian Soares Lopes |
-| xx/xxxxxx  |  Paulo Vitor Abi |
+| 19/0047968  |  Paulo Vitor Abi Acl |
 
 ## Sobre 
-** Descreva os objetivos do seu projeto e como ele funciona. **
 
 Resolução de questões dos sites atcoder e codechef sobre o conteúdo de grafos 1.
 
 Para acessar às questões, utilize a seqência de pastas para pesquisa: `<nome_do_site\>`
 
 ## Screenshots
-** Adicione 3 ou mais screenshots do projeto em funcionamento. **
 
+Submissão Home Delivery
 
+![Nome da imagem](./assets/submissao.png)
+
+Submissão Teleporter
+
+![Nome da imagem](./assets/submissao_1.png)
+
+Submissão Root M Leaper
+
+![Nome da imagem](./assets/submissao_2.png)
 
 ## Instalação 
 **Linguagem**: C++ e Python <br>
